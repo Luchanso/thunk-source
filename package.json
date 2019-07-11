@@ -1,0 +1,26 @@
+{
+  "name": "thunk-source",
+  "version": "0.1.0",
+  "description": "Getting thunk wrapped function",
+  "main": "index.ts",
+  "author": "Loutchansky Oleg <luchansodev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/redux": "3.6.0",
+    "@types/redux-thunk": "2.1.0",
+    "typescript": "3.5.3"
+  },
+  "scripts": {
+    "test": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "typescript",
+    "redux",
+    "thunk",
+    "type",
+    "utils"
+  ]
+}
