@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import { BindedThunk } from ".";
+import { BindedThunk, BindendThunkFromMap } from ".";
 
 const start = {
   type: "start"
@@ -54,4 +54,29 @@ type AsyncAction = typeof start | typeof finish | typeof fail;
   type BindedAsyncFunction = BindedThunk<typeof asyncFunction>;
   const testFunction: BindedAsyncFunction = (data: string, count: number) =>
     Promise.resolve();
+}
+
+// thrid test
+{
+  const asyncFunction1 = (
+    data: string,
+    count: number
+  ): ThunkAction<void, {}, {}, AsyncAction> => async dispatch => {};
+  const asyncFunction2 = (
+    toggle: boolean,
+  ): ThunkAction<void, {}, {}, AsyncAction> => async dispatch => {};
+
+  const mapDispatchToProps = {
+    asyncFunction1,
+    asyncFunction2,
+    a: () => 'asd' as const
+  };
+
+  type DispatchProps = BindendThunkFromMap<typeof mapDispatchToProps>;
+
+  const props: DispatchProps = {
+    asyncFunction1: (data: string, count: number) => {},
+    asyncFunction2: (toggle: boolean) => {},
+    a: () => 'asd'
+  }
 }
