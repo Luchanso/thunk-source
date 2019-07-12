@@ -1,6 +1,6 @@
 # thunk-source
 
-Typescript util for getting type of binded thunk action
+Typescript util for getting type of bound thunk action
 
 ## Install:
 
@@ -36,14 +36,14 @@ const mapDispatchToProps = {
   publicationPost
 };
 
-type Props = BindendThunkFromMap<typeof mapDispatchToProps>;
+type Props = BoundThunkFromMap<typeof mapDispatchToProps>;
 ```
 
 Full example:
 
 ```ts
 import React from "react";
-import { BindedThunk } from "thunk-source";
+import { BoundThunk } from "thunk-source";
 import { ThunkAction } from "redux-thunk";
 
 const start = {
@@ -68,7 +68,7 @@ const mapDispatchToProps = {
   publicationPost
 };
 
-type Props = BindendThunkFromMap<typeof mapDispatchToProps>;
+type Props = BoundThunkFromMap<typeof mapDispatchToProps>;
 
 const MyComponent = (props: Props) => {
   this.props.publicationPost();
@@ -81,10 +81,10 @@ connect(
 )(MyComponent);
 ```
 
-Also you can get bindend type from single thunk:
+Also you can get bound type from single thunk:
 
 ```ts
 type Props = {
-  publicationPost: BindedThunk<typeof publicationPost>;
+  publicationPost: BoundThunk<typeof publicationPost>;
 };
 ```

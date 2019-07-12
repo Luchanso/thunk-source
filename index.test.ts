@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import { BindedThunk, BindendThunkFromMap } from ".";
+import { BoundThunk, BoundThunkFromMap } from ".";
 
 const start = {
   type: "start"
@@ -30,8 +30,8 @@ type AsyncAction = typeof start | typeof finish | typeof fail;
     }
   };
 
-  type BindedAsyncFunction = BindedThunk<typeof asyncFunction>;
-  const testFunction: BindedAsyncFunction = (data: string) =>
+  type BondedAsyncFunction = BoundThunk<typeof asyncFunction>;
+  const testFunction: BondedAsyncFunction = (data: string) =>
     Promise.resolve(200);
 }
 
@@ -51,8 +51,8 @@ type AsyncAction = typeof start | typeof finish | typeof fail;
     }
   };
 
-  type BindedAsyncFunction = BindedThunk<typeof asyncFunction>;
-  const testFunction: BindedAsyncFunction = (data: string, count: number) =>
+  type BondedAsyncFunction = BoundThunk<typeof asyncFunction>;
+  const testFunction: BondedAsyncFunction = (data: string, count: number) =>
     Promise.resolve();
 }
 
@@ -72,7 +72,7 @@ type AsyncAction = typeof start | typeof finish | typeof fail;
     a: () => 'asd' as const
   };
 
-  type DispatchProps = BindendThunkFromMap<typeof mapDispatchToProps>;
+  type DispatchProps = BoundThunkFromMap<typeof mapDispatchToProps>;
 
   const props: DispatchProps = {
     asyncFunction1: (data: string, count: number) => {},
