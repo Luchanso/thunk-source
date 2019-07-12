@@ -17,43 +17,74 @@ npm i thunk-source --dev
 ## Usage
 
 ```ts
-import React from 'react';
+type ApplicationState = {
+  /* ... */
+};
+
+type Actions = FirstAction | SecondAction /* | ... */;
+
+const publicationPost = (): ThunkAction<
+  void,
+  ApplicationState,
+  {},
+  Actions
+> => dispatch => {
+  // ...
+};
+
+const mapDispatchToProps = {
+  publicationPost
+};
+
+type Props = BindendThunkFromMap<typeof mapDispatchToProps>;
+```
+
+Full example:
+
+```ts
+import React from "react";
 import { BindedThunk } from "thunk-source";
 import { ThunkAction } from "redux-thunk";
 
 const start = {
-    type: 'start'
+  type: "start"
 } as const;
 
 const stop = {
-    type: 'stop'
+  type: "stop"
 } as const;
 
 type Actions = typeof start | typeof stop;
 
-const publicationPost = (): ThunkAction<void, {}, {}, Actions> => (dispatch) => {
-    dispatch(start);
+const publicationPost = (): ThunkAction<void, {}, {}, Actions> => dispatch => {
+  dispatch(start);
 
-    setTimeout(() => {
-        dispatch(stop);
-    }, 1000);
-}
+  setTimeout(() => {
+    dispatch(stop);
+  }, 1000);
+};
 
 const mapDispatchToProps = {
-    publicationPost
+  publicationPost
 };
 
-type Props = {
-    publicationPost: BindedThunk<typeof publicationPost>
-};
+type Props = BindendThunkFromMap<typeof mapDispatchToProps>;
 
 const MyComponent = (props: Props) => {
-    this.props.publicationPost();
-    // ...
+  this.props.publicationPost();
+  // ...
 };
 
-connect(null, mapDispatchToProps)(MyComponent);
+connect(
+  null,
+  mapDispatchToProps
+)(MyComponent);
 ```
 
-## TODO
-- [ ] Get calculated types from mapDispatchToProps
+Also you can get bindend type from single thunk:
+
+```ts
+type Props = {
+  publicationPost: BindedThunk<typeof publicationPost>;
+};
+```
