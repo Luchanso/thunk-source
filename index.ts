@@ -2,7 +2,7 @@ import { ThunkAction } from "redux-thunk";
 
 export type BoundThunk<T> = T extends (
   ...args: infer P
-) => ThunkAction<infer R, infer S, infer E, infer A>
+) => ThunkAction<infer R, any, any, any>
   ? (...args: P) => R
   : T;
 

@@ -1,6 +1,6 @@
 {
   "name": "thunk-source",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Getting thunk wrapped function",
   "main": "index.ts",
   "author": "Loutchansky Oleg <luchansodev@gmail.com>",
