@@ -6,10 +6,4 @@ export type BindedThunk<T> = T extends (
   ? (...args: P) => R
   : T;
 
-export type BindendThunkFromMap<M> = M extends {
-  [key: string]: infer B;
-}
-  ? {
-      [K in keyof M]: BindedThunk<M[K]>
-    }
-  : M;
+export type BindendThunkFromMap<M> = { [K in keyof M]: BindedThunk<M[K]> };
